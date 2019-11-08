@@ -45,8 +45,11 @@ void ControlMD::resetSpeed(uint8_t number){
 	__HAL_TIM_SET_COMPARE(MD[number].nTim, MD[number].nChannel, 0);
 }
 
-void ControlMD::setSpeed(uint8_t number, int16_t speed){
-	if(speed < -MD[number].maxCounterPeriod or MD[number].maxCounterPeriod < speed) return;
+uint8_t ControlMD::setSpeed(uint8_t number, int16_t speed){
+	if(speed < -MD[number].maxCounterPeriod or MD[number].maxCounterPeriod < speed){
+    resetSpeed();
+     return 1;
+   }
 	if(speed < 0){
 		__HAL_TIM_SET_COMPARE(MD[number].pTim, MD[number].pChannel, 0);
 		__HAL_TIM_SET_COMPARE(MD[number].nTim, MD[number].nChannel, -speed);
@@ -57,6 +60,7 @@ void ControlMD::setSpeed(uint8_t number, int16_t speed){
 		__HAL_TIM_SET_COMPARE(MD[number].pTim, MD[number].pChannel, 0);
 		__HAL_TIM_SET_COMPARE(MD[number].nTim, MD[number].nChannel, 0);
 	}
+  return 0;
 }
 
 void ControlMD::setSpeedPercent(uint8_t number , int8_t percent){

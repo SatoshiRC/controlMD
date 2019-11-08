@@ -28,7 +28,7 @@ public:
   void start(uint8_t number);
   void stop(uint8_t number);
   void resetSpeed(uint8_t number);
-  void setSpeed(uint8_t number, int16_t speed);
+  uiny8_t setSpeed(uint8_t number, int16_t speed);
   void setSpeedPercent(uint8_t number , int8_t percent);
 
 private:
