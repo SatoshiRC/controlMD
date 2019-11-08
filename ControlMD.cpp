@@ -20,11 +20,11 @@ void ControlMD::addMD(uint8_t number, TIM_HandleTypeDef *pTim, uint32_t pChannel
   MD.insert(std::make_pair(number, tmpArgument));
 }
 
-void ControlMD::init(uint8_t number){
+void ControlMD::init(uint8_t number, double maxSpeedPercent){
   if(MD[number].pTim->Instance->PSC >= MD[number].nTim->Instance->PSC){
-	  MD[number].maxCounterPeriod = MD[number].nTim->Instance->PSC * 0.98;
+	  MD[number].maxCounterPeriod = (uint16_t)MD[number].nTim->Init.Period * maxSpeedPercent / 100;
   }else{
-	  MD[number].maxCounterPeriod = MD[number].pTim->Instance->PSC * 0.98;
+	  MD[number].maxCounterPeriod = (uint16_t)MD[number].pTim->Init.Period * maxSpeedPercent / 100;
   }
 }
 

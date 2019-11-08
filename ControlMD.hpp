@@ -15,7 +15,7 @@ typedef struct{
   uint32_t pChannel;
   TIM_HandleTypeDef *nTim;
   uint32_t nChannel;
-  int16_t maxCounterPeriod;
+  uint16_t maxCounterPeriod;
 }MD_t;
 
 
@@ -24,7 +24,7 @@ public:
   ControlMD();
   ~ControlMD();
   void addMD(uint8_t number, TIM_HandleTypeDef *pTim, uint32_t pChannel, TIM_HandleTypeDef *nTim, uint32_t nChannel);
-  void init(uint8_t number);
+  void init(uint8_t number, double maxSpeedPercent);
   void start(uint8_t number);
   void stop(uint8_t number);
   void resetSpeed(uint8_t number);
