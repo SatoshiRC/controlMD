@@ -47,7 +47,7 @@ void ControlMD::resetSpeed(uint8_t number){
 
 uint8_t ControlMD::setSpeed(uint8_t number, int16_t speed){
 	if(speed < -MD[number].maxCounterPeriod or MD[number].maxCounterPeriod < speed){
-    resetSpeed();
+    resetSpeed(number);
      return 1;
    }
 	if(speed < 0){
