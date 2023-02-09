@@ -51,5 +51,5 @@ uint8_t ControlMD::setSpeed(int16_t speed){
 }
 
 void ControlMD::setSpeedPercent(int8_t percent){
-	setSpeed((int16_t)percent * MD[number].maxCounterPeriod * 0.01);
+	setSpeed((int16_t)percent * maxCounterPeriod * 0.01);
 }
